@@ -1,11 +1,11 @@
-import Description from "../../components/ProductDetails";
-import Warranty from "../../components/Warranty";
+import { ProductDetails, Warranty, LastReleases } from '../../components';
 
 function ProductDescription() {
   return (
     <>
-      <Description />
+      <ProductDetails />
       <Warranty />
+      <LastReleases />
     </>
   );
 }
