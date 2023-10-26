@@ -1,10 +1,11 @@
 import * as S from './styles';
 import Frame from '../../assets/img/frame.png';
+import { Link } from 'react-router-dom';
 
-export default function PorductCard() {
+export default function ProductCard() {
   return (
-    <>
-      <S.HeaderWrapper>
+    <Link to="/description">
+      <S.ProductCardWrapper>
         <S.FrameBox>
           <img src={Frame} alt='Quadro' />
           <h1>Quadro Monalisa Cats</h1>
@@ -15,7 +16,7 @@ export default function PorductCard() {
             <h1>R$ 25</h1>
           </S.ButtonContainer>
         </S.FrameBox>
-      </S.HeaderWrapper>
-    </>
+      </S.ProductCardWrapper>
+    </Link>
   );
 }

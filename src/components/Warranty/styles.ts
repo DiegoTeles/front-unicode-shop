@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const WarrantyrWrapper = styled.div`
-  width: 1124px;
   height: 124px;
   background: #ede6db;
   display: flex;

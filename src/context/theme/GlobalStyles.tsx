@@ -20,7 +20,7 @@ const GlobalStyles = createGlobalStyle`
   main {  
     max-width: 1280px;
     width: 100%;
-    margin: 0px auto;
+    margin: 50px auto;
     
     .scroll-lock {
       overflow-y: hidden;

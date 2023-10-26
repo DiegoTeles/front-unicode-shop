@@ -1,9 +1,9 @@
-import { Product } from '../views';
+import { ProductDescriptionView } from '../views';
 
 function ProductDescription() {
   return (
     <>
-      <Product />
+      <ProductDescriptionView />
     </>
   );
 }

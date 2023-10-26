@@ -1,2 +1,3 @@
-export { default as LastReleases } from '../components/LastReleases';
-export { default as Product } from './ProductDescription';
+export { default as ProductDescriptionView } from './ProductDescriptionView';
+export { default as CartView } from './CartView';
+export { default as HomeView } from './HomeView';

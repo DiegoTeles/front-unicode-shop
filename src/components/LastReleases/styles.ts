@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeaderWrapper = styled.div`
+export const LastReleasesWrapper = styled.div`
   height: 386px;
   padding: 40px;
   text-align: center;

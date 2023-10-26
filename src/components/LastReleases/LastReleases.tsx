@@ -1,17 +1,17 @@
 import * as S from './styles';
-import { PorductCard } from '..';
+import { ProductCard } from '..';
 
 export default function LastReleases() {
   return (
     <>
-      <S.HeaderWrapper>
+      <S.LastReleasesWrapper>
         <h1>Últimos lançamentos</h1>
         <S.ProductBox>
-          <PorductCard />
-          <PorductCard />
-          <PorductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </S.ProductBox>
-      </S.HeaderWrapper>
+      </S.LastReleasesWrapper>
     </>
   );
 }

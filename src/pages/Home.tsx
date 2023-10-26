@@ -1,13 +1,7 @@
-import { Header } from "../components";
-import { LastReleases } from "../views";
+import { HomeView } from '../views';
 
 function Home() {
-  return (
-    <>
-      <Header />
-      <LastReleases />
-    </>
-  );
+  return <HomeView />;
 }
 
 export default Home;
