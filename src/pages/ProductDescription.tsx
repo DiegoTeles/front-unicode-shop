@@ -1,11 +1,9 @@
-import Description from '../components/Description';
-import Warranty from '../components/Warranty';
+import { Product } from '../views';
 
 function ProductDescription() {
   return (
     <>
-      <Description />
-      <Warranty />
+      <Product />
     </>
   );
 }

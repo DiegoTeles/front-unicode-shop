@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Frame from '../../assets/img/frame.png';
 
-export default function Description() {
+export default function ProductDetails() {
   return (
     <>
-      <HeaderWrapper>
+      <ProductDetailsWrapper>
         <FrameBox>
           <img src={Frame} alt='Quadro' />
         </FrameBox>
@@ -15,12 +15,12 @@ export default function Description() {
           <h2>R$ 25,00</h2>
           <Button>Comprar</Button>
         </DescriptionBox>
-      </HeaderWrapper>
+      </ProductDetailsWrapper>
     </>
   );
 }
 
-const HeaderWrapper = styled.div`
+const ProductDetailsWrapper = styled.div`
   margin-top: 50px;
   height: 386px;
   padding: 40px;
