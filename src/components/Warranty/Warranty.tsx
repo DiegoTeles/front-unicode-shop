@@ -54,7 +54,6 @@ const FrameBox = styled.div`
   h1 {
     margin-top: 20px;
     color: #000;
-    font-family: Roboto;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;

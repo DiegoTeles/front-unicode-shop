@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
+    font-family: Roboto;
     font-weight: 400;  
     margin: 0;
     padding: 0;
