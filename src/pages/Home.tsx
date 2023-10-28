@@ -5,14 +5,19 @@ import { useEffect } from 'react';
 
 function Home() {
   const { results } = useProductsQuery();
-  const { products, setProducts } = useGlobalStore();
+  const { setAllProducts } = useGlobalStore();
 
   useEffect(() => {
     if (results) {
-      setProducts(results);
+      setAllProducts(results);
     }
-  }, [results, setProducts]);
-  console.log('products :>> ', products);
+  }, [results, setAllProducts]);
+
+  useEffect(() => {
+    if (results) {
+      setAllProducts(results);
+    }
+  }, [results, setAllProducts]);
   return <HomeView />;
 }
 

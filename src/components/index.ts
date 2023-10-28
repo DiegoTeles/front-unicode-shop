@@ -4,4 +4,6 @@ export { default as ProductCard } from './ProductCard';
 export { default as ProductDetails } from './ProductDetails';
 export { default as LastReleases } from './LastReleases';
 export { default as Warranty } from './Warranty';
+export { default as Navbar } from './Navbar';
 export { default as FinishCard } from './FinishCard';
+export { default as CartBadge } from './CartBadge';

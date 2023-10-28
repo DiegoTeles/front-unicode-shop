@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ProductDetailsWrapper = styled.div`
-  margin-top: 50px;
   height: 386px;
   padding: 40px;
   display: flex;
