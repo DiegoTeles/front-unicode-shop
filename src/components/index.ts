@@ -7,3 +7,4 @@ export { default as Warranty } from './Warranty';
 export { default as Navbar } from './Navbar';
 export { default as FinishCard } from './FinishCard';
 export { default as CartBadge } from './CartBadge';
+export { default as CreditCard } from './CreditCard';

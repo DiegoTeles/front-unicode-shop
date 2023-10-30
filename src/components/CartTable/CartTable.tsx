@@ -7,6 +7,7 @@ import { getItem } from '../../utils/localStorage';
 import { Products } from '../../types/products';
 import { useCart } from '../../hooks/useCart';
 import useGlobalStore from '../../store/useGlobalStore';
+import { sumProductPrices } from '../../utils/sumPrices';
 
 export default function CartTable() {
   const { setProductToCartCountDown, productToCartCount } = useGlobalStore();
@@ -23,6 +24,7 @@ export default function CartTable() {
     removeFromCart(productId);
     setProductToCartCountDown();
   };
+
   return (
     <S.TableCard>
       <table>
@@ -59,6 +61,12 @@ export default function CartTable() {
             <>Sem itens no carrinho</>
           )}
         </tbody>
+        <tfoot>
+          <tr>
+            <th align='left'>Total</th>
+            <td align='left'> {sumProductPrices(products)}</td>
+          </tr>
+        </tfoot>
       </table>
     </S.TableCard>
   );

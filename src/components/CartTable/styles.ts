@@ -76,9 +76,10 @@ export const TableContent = styled.div`
 `;
 
 export const TableCard = styled.div`
+  margin-top: 100px;
   width: 70%;
   padding: 10px 40px;
-  border-radius: 4px;
+  border-radius: 23px 0 0 23px;
   background-color: #fff;
   height: 100%;
 
