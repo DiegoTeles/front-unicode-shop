@@ -5,9 +5,12 @@ import { useFormik } from 'formik';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 import { CreditCard } from '..';
 import { censureCardNumber } from '../../utils/maskedCardNumber';
+import { usePayment } from '../../hooks/usePayment';
+import { Products } from '../../types/products';
 
-export default function FinishCard() {
+export default function FinishCard({ products }: Products[]) {
   const [selectedcard, setSelectedCard] = useState<boolean>(false);
+  const makePayment = usePayment();
   const initialValues = {
     name: '',
     validateMonth: '',
@@ -50,8 +53,9 @@ export default function FinishCard() {
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log(values);
+      await makePayment(products);
     },
   });
 
@@ -63,7 +67,7 @@ export default function FinishCard() {
         validateMonth={formik.values.validateMonth}
         validateYear={formik.values.validateYear}
         cvv={formik.values.cvv}
-      />
+      />{' '}
       <form onSubmit={formik.handleSubmit}>
         <S.Box>
           <S.Input>

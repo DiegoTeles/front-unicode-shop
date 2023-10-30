@@ -1,5 +1,9 @@
+import { loadStripe } from '@stripe/stripe-js';
 import { GetProductsResponse, Products } from '../../types/products';
-//import { api } from '../config/api';
+import { api } from '../config/api';
+
+const publishKey =
+  'pk_test_51JJX3bCghffXS7LvnG0u0XsPUSrMEsDY1wHwScFPhMJsOnWhKIgpDSBll3QGSK4ceywbfzO8sayH90vJ1Yv9ACHN00sZO7gIgM';
 
 export const getAllProducts = async (): Promise<GetProductsResponse> => {
   // const URL = ` `;

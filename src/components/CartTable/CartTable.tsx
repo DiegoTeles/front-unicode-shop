@@ -64,7 +64,7 @@ export default function CartTable() {
         <tfoot>
           <tr>
             <th align='left'>Total</th>
-            <td align='left'> {sumProductPrices(products)}</td>
+            <td align='left' >R${sumProductPrices(products)}</td>
           </tr>
         </tfoot>
       </table>
