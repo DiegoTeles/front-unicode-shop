@@ -2,14 +2,29 @@ import { useState } from 'react';
 import * as S from './styles';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 import { CreditCard } from '..';
 import { censureCardNumber } from '../../utils/maskedCardNumber';
 import { usePayment } from '../../hooks/usePayment';
 import { Products } from '../../types/products';
+import { formatDate } from '../../utils/formatDate';
+import { CreditCard as CreditCardType } from '../../types/creditCard';
+import {
+  useCreateCreditCardByIdQuery,
+  useCreditCardQuery,
+  useDeleteCreditCardByIdQuery,
+} from '../../services/queries/payment.query';
 
-export default function FinishCard({ products }: Products[]) {
-  const [selectedcard, setSelectedCard] = useState<boolean>(false);
+interface OwnProps {
+  products: Products[];
+}
+
+export default function FinishCard({ products }: OwnProps) {
+  const [selectedcard, setSelectedCard] = useState<CreditCardType>();
+  const { data, refetch } = useCreditCardQuery();
+  const { mutateAsync } = useDeleteCreditCardByIdQuery();
+  const { mutateAsync: mutateCreateAsync } = useCreateCreditCardByIdQuery();
+
   const makePayment = usePayment();
   const initialValues = {
     name: '',
@@ -24,21 +39,32 @@ export default function FinishCard({ products }: Products[]) {
     validateMonth: Yup.string().required('Mês é obrigatório'),
     validateYear: Yup.string().required('Ano é obrigatório'),
     numberCard: Yup.string().required('Número do cartão é obrigatório').max(16),
-    cvv: Yup.string().required('CVV é obrigatório'),
+    cvv: Yup.string()
+      .matches(/^[0-9]{1,4}$/, 'O número deve conter no máximo 4 dígitos')
+      .required('CVV é obrigatório'),
   });
 
-  const handleEditCard = (cardValues) => {};
+  const handleRemoveCard = async (cardId: number) => {
+    await mutateAsync(cardId);
+    refetch();
+  };
 
-  const handleRemoveCard = (cardId) => {};
-  const handleSelectCard = (cardValues) => {
-    setSelectedCard(!selectedcard);
+  const handleMakePayment = async () => {
+    await makePayment(products);
+    refetch();
+  };
+
+  const handleSelectCard = (cardValues: CreditCardType) => {
+    setSelectedCard(cardValues);
+
+    const [month, year] = formatDate(cardValues.exp_date).split('/');
 
     const selectedCardData = {
-      name: 'Nome do Cartão',
-      validateMonth: '12',
-      validateYear: '2024',
-      numberCard: '5655565656564444',
-      cvv: '123',
+      name: cardValues.holder,
+      validateMonth: month,
+      validateYear: year,
+      numberCard: cardValues.number,
+      cvv: cardValues.cvv,
     };
 
     formik.setValues({
@@ -46,7 +72,7 @@ export default function FinishCard({ products }: Products[]) {
       validateMonth: selectedcard ? selectedCardData.validateMonth : '',
       validateYear: selectedcard ? selectedCardData.validateYear : '',
       numberCard: selectedcard ? selectedCardData.numberCard : '',
-      cvv: selectedcard ? selectedCardData.cvv : '',
+      cvv: '',
     });
   };
 
@@ -54,8 +80,15 @@ export default function FinishCard({ products }: Products[]) {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      console.log(values);
-      await makePayment(products);
+      const exp_date = `${values.validateMonth}/${values.validateYear}`;
+      const data = {
+        exp_date: exp_date,
+        holder: values.name,
+        number: values.numberCard,
+        cvv: values.cvv,
+      };
+      await mutateCreateAsync(data);
+      refetch();
     },
   });
 
@@ -121,7 +154,7 @@ export default function FinishCard({ products }: Products[]) {
                 value={formik.values.validateYear}
               >
                 <option value=''>Ano</option>
-                {Array.from({ length: 8 }, (_, index) => (
+                {Array.from({ length: 10 }, (_, index) => (
                   <option key={index} value={(index + 2024).toString()}>
                     {(index + 2024).toString()}
                   </option>
@@ -163,24 +196,36 @@ export default function FinishCard({ products }: Products[]) {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.cvv}
+              maxLength={4}
+              max={4}
+              pattern='[0-9]*'
             />
           </S.Input>
         </S.Box>
         <h3>Cartões cadastrados</h3>
-
-        {Array.from({ length: 2 }, (_, index) => (
-          <S.Cards className={selectedcard && 'active'}>
-            <p onClick={() => handleSelectCard(1)}>
-              {censureCardNumber('5655 5656 5656 4444')}
-            </p>
-            <S.ActionsButton>
-              <AiFillEdit onClick={handleEditCard} />
-              <AiFillDelete onClick={handleRemoveCard} />
-            </S.ActionsButton>
-          </S.Cards>
-        ))}
+        <S.CardContainer>
+          {data?.length ? (
+            data.map((card: CreditCardType, index: number) => (
+              <S.Cards
+                key={index}
+                onClick={() => handleSelectCard(card)}
+                className={selectedcard?.id === card.id && 'active'}
+              >
+                <p>{censureCardNumber(card.number)}</p>
+                <S.ActionsButton>
+                  <AiFillDelete onClick={() => handleRemoveCard(card.id)} />
+                </S.ActionsButton>
+              </S.Cards>
+            ))
+          ) : (
+            <>Não existe cartões cadastrados</>
+          )}
+        </S.CardContainer>
         <S.ButtonContainer>
-          <S.Button type='submit'>Finalizar compra</S.Button>
+          <S.Button type='submit'>Salvar cartão</S.Button>
+          <S.Button onClick={() => handleMakePayment()}>
+            Finalizar compra
+          </S.Button>
         </S.ButtonContainer>
       </form>
     </S.FinishWrapper>

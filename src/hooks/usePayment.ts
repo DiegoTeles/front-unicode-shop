@@ -31,7 +31,9 @@ export function usePayment() {
 
     try {
       const response = await fetch(
-        'http://localhost:5252/create-checkout-session',
+        `${
+          import.meta.env.VITE_API_END_POINT
+        }/stripe/create-checkout-session`,
         {
           method: 'POST',
           headers: headers,

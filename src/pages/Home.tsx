@@ -12,12 +12,6 @@ function Home() {
       setAllProducts(results);
     }
   }, [results, setAllProducts]);
-
-  useEffect(() => {
-    if (results) {
-      setAllProducts(results);
-    }
-  }, [results, setAllProducts]);
   return <HomeView />;
 }
 

@@ -7,7 +7,7 @@ export const useProductsQuery = (): GetProductsResponse => {
     queryKey: ['getAllProducts'],
     queryFn: async () => await getAllProducts(),
   });
-  console.log('data :>> ', data);
+
   if (isError) {
     throw new Error('Erro ao buscar produtos');
   }

@@ -24,6 +24,12 @@ export const Box = styled.div`
   justify-content: space-between;
 `;
 
+export const CardContainer = styled.div`
+  height: 160px;
+  overflow-y: scroll;
+  margin-bottom: 20px; 
+`;
+
 export const Input = styled.div`
   display: grid;
   margin: 0 0 20px;
@@ -48,7 +54,8 @@ export const Input = styled.div`
     gap: 8px;
     padding: 0 8px 0 0;
   }
-  input, select {
+  input,
+  select {
     border-radius: 3px;
     border: 1px solid #dedede;
     background: #fff;
@@ -78,7 +85,7 @@ export const Input = styled.div`
   }
 `;
 
-export const Cards = styled.div`
+export const Cards = styled.div<any>`
   width: 100%;
   display: flex;
   justify-content: space-between;

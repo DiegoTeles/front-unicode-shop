@@ -7,6 +7,7 @@ import { getItem } from '../../utils/localStorage';
 
 export default function CartView() {
   const { productToCartCount } = useGlobalStore();
+
   const [products, setProducts] = useState<Products[]>([]);
 
   useEffect(() => {
@@ -19,7 +20,9 @@ export default function CartView() {
       <h1>No seu carrinho </h1>
       <S.CartWrapper>
         <CartTable />
-        <FinishCard products={products} />
+        <FinishCard
+          products={products}
+        />
       </S.CartWrapper>
     </>
   );

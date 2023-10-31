@@ -5,13 +5,13 @@ import useGlobalStore from '../store/useGlobalStore';
 import { useProductByIdQuery } from '../services/queries/products.query';
 
 function ProductDescription() {
-  //const { id }: number = useParams();
-  const { results } = useProductByIdQuery(1);
+  const { id }: string = useParams();
+  const { results } = useProductByIdQuery(id);
   const { setProduct } = useGlobalStore();
 
   useEffect(() => {
     if (results) {
-      setProduct(results[0]);
+      setProduct(results);
     }
   }, [results, setProduct]);
   return (
