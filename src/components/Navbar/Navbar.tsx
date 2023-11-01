@@ -27,7 +27,9 @@ export default function Navbar() {
           </S.Logo>
         </Link>
         <S.TextBox>
-          <p>Admin</p>
+          <Link to={'/admin'}>
+            <p>Admin</p>
+          </Link>
           <p>
             Olá, <b>Fulano</b>
           </p>

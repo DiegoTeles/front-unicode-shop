@@ -23,6 +23,9 @@ export const DescriptionBox = styled.div`
   margin-top: 30px;
   width: 450px;
 
+  h1 {
+    font-size: 28px;
+  }
   p {
     width: 312px;
     margin-bottom: 20px;

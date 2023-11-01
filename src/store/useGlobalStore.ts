@@ -8,6 +8,8 @@ interface GlobalState {
   allCreditCard: CreditCard[];
   product: Products;
   productToCartCount: number;
+  isOpenModal: boolean;
+  selectedProduct: Products;
 }
 
 export interface GlobalStore extends GlobalState {
@@ -16,6 +18,8 @@ export interface GlobalStore extends GlobalState {
   setProduct: (product: Products) => void;
   setProductToCartCountUp: () => void;
   setProductToCartCountDown: () => void;
+  setOpenModal: () => void;
+  setSelectedProduct: (selectedProduct: Products) => void;
 }
 
 const initialState: Pick<GlobalStore, keyof GlobalState> = {
@@ -28,6 +32,8 @@ const initialState: Pick<GlobalStore, keyof GlobalState> = {
     price: 0,
   },
   productToCartCount: 0,
+  isOpenModal: false,
+  selectedProduct: { title: '', description: '', price: 0 },
 };
 
 const useGlobalStore = create<GlobalStore>()(
@@ -41,6 +47,9 @@ const useGlobalStore = create<GlobalStore>()(
         set((state) => ({ productToCartCount: state.productToCartCount + 1 })),
       setProductToCartCountDown: () =>
         set((state) => ({ productToCartCount: state.productToCartCount - 1 })),
+      setOpenModal: () => set((state) => ({ isOpenModal: !state.isOpenModal })),
+      setSelectedProduct: (selectedProduct: Products) =>
+        set({ selectedProduct }),
     }),
     'globalStore'
   )

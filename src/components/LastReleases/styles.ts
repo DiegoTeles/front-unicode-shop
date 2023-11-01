@@ -8,6 +8,6 @@ export const LastReleasesWrapper = styled.div`
 `;
 
 export const ProductBox = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 `;

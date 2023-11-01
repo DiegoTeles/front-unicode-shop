@@ -7,10 +7,7 @@ export default function Header() {
         <S.TextBox>
           <h1>Unicode</h1>
           <h1>Quadros decorativos</h1>
-
-          <S.Button>Ver quadros</S.Button>
         </S.TextBox>
-        <S.ImageBox>Unicode Quadros decorativos</S.ImageBox>
       </S.HeaderWrapper>
     </>
   );

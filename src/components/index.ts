@@ -8,3 +8,5 @@ export { default as Navbar } from './Navbar';
 export { default as FinishCard } from './FinishCard';
 export { default as CartBadge } from './CartBadge';
 export { default as CreditCard } from './CreditCard';
+export { default as ProductForm } from './ProductForm';
+export { default as Modal } from './Modal';

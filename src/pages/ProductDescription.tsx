@@ -6,14 +6,14 @@ import { useProductByIdQuery } from '../services/queries/products.query';
 
 function ProductDescription() {
   const { id }: string = useParams();
-  const { results } = useProductByIdQuery(id);
+  const { data } = useProductByIdQuery(id);
   const { setProduct } = useGlobalStore();
 
   useEffect(() => {
-    if (results) {
-      setProduct(results);
+    if (data) {
+      setProduct(data);
     }
-  }, [results, setProduct]);
+  }, [data, setProduct]);
   return (
     <>
       <ProductDescriptionView />

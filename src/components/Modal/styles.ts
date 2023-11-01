@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const NavbarWrapper = styled.div`
   padding: 10px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid #5f5e5e47;
 `;

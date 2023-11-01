@@ -54,9 +54,23 @@ export const ButtonContainer = styled.div`
   }
 `;
 
+export const ButtonAction = styled.button`
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  svg{
+    font-size: 14px;
+  }
+`;
 export const Button = styled.button`
   padding: 8px 30px;
-  background-color: #ede6db;
   align-items: center;
   color: #fff;
   background-color: #000;

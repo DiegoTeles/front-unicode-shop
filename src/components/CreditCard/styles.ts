@@ -27,6 +27,7 @@ export const CardNumber = styled.div`
   h1 {
     color: #fff;
     height: 52px;
+    font-size: 32px;
   }
 `;
 export const MoreInfos = styled.div`

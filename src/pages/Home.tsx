@@ -4,14 +4,14 @@ import useGlobalStore from '../store/useGlobalStore';
 import { useEffect } from 'react';
 
 function Home() {
-  const { results } = useProductsQuery();
+  const { data } = useProductsQuery();
   const { setAllProducts } = useGlobalStore();
 
   useEffect(() => {
-    if (results) {
-      setAllProducts(results);
+    if (data) {
+      setAllProducts(data);
     }
-  }, [results, setAllProducts]);
+  }, [data, setAllProducts]);
   return <HomeView />;
 }
 
