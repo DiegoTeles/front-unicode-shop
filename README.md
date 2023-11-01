@@ -1,5 +1,7 @@
 # Frontend em ViteJS (React)
 
+Projeto de loja criado com Vite e utilizando o template do [figma desenhado por mim](https://www.figma.com/file/P2U32JpcDRlewzcWRwOPh4/Untitled?type=design&node-id=12%3A355&mode=design&t=Qn5VT0zxbp1TMNgS-1), certifique-se en criar produtos no menu Admin na Navbar antes de utilizar o fluxo de dados, grande desafio aprender em pouco tempo a utilizar as bibliotecas react-query e zustand que estavam no meu backlog de aprendizado a muito tempo.
+
 ## Como Começar
 
 Para executar este projeto de frontend em ViteJS (React) com as bibliotecas mencionadas, siga as etapas abaixo:
